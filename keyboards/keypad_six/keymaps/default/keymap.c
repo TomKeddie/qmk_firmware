@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-	[0] = { { KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18, SAFE_RANGE, SAFE_RANGE+1 } }
+	[0] = { { KC_F20, KC_F20, KC_F21, KC_F22, KC_F23, KC_F24, SAFE_RANGE, SAFE_RANGE+1 } }
 };
 
 // Linux scancodes 183-188
@@ -23,18 +23,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 static uint8_t modifier = 0;
 
-void keyboard_post_init_user(void) {
-#ifdef CONSOLE_ENABLE
-    debug_enable=true;
-    debug_matrix=true;
-    debug_keyboard=true;
-#endif
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  // If console is enabled, it will print the matrix position and status of each key pressed
 #ifdef CONSOLE_ENABLE
-    uprintf("KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u modifier %d\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count, modifier);
+    // If console is enabled, it will print the matrix position and status of each key pressed
+    uprintf("%s: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u modifier %d\n",
+            __func__, keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time,
+            record->tap.interrupted, record->tap.count, modifier);
 #endif
 
     switch (keycode) {
@@ -80,7 +74,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         default:
             break;
     }
-  return true;
+    
+    return true;
 }
 
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -109,4 +104,7 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
         default:
             break;
     }
+}
+
+void housekeeping_task_user(void) {
 }

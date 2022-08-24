@@ -17,5 +17,8 @@ BACKLIGHT_ENABLE = no  # Enable keyboard backlight functionality
 AUDIO_ENABLE     = no
 RGBLIGHT_ENABLE  = no
 OLED_ENABLE      = no
+DEFERRED_EXEC_ENABLE = yes
 
 DEFAULT_FOLDER = keypad_six
+
+# SRC += keypad_six_lcd.c
