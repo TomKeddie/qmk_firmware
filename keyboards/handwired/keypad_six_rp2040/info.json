@@ -1,0 +1,22 @@
+{
+  "keyboard_name": "keypad_six_rp2040",
+  "url": "https://github.com/TomKeddie/prj-keypad-six",
+  "maintainer": "Tom Keddie",
+  "usb": {
+      "vid": "0xFEED",
+      "pid": "0x6465",
+      "device_version": "0.0.1"
+  },
+  "layouts": {
+    "LAYOUT": {
+      "layout": [
+        {"x":0, "y":0},
+        {"x":1, "y":0},
+        {"x":2, "y":0},
+        {"x":3, "y":0},
+        {"x":4, "y":0},
+        {"x":5, "y":0}
+      ]
+    }
+  }
+}
